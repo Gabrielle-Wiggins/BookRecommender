@@ -1,0 +1,92 @@
+.rec-header {
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 8px;
+}
+
+.rec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.rec-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.genre-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.genre-pill {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: 24px;
+  border: 1px solid var(--cream-border);
+  background: var(--white);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: var(--shadow-sm);
+}
+
+.genre-pill:hover {
+  border-color: var(--burgundy-mid);
+  color: var(--burgundy);
+}
+
+.genre-pill.active {
+  background: var(--burgundy);
+  color: var(--cream);
+  border-color: var(--burgundy);
+}
+
+.rec-results-header {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.rec-results-header strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rec-loading {
+  text-align: center;
+  padding: 3rem;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+.error-banner {
+  background: #FCEBEB;
+  border: 1px solid #F7C1C1;
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #A32D2D;
+  margin-bottom: 1rem;
+}

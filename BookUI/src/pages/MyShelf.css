@@ -1,0 +1,42 @@
+.shelf-header {
+  margin-bottom: 1.5rem;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 8px;
+}
+
+.shelf-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.shelf-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.shelf-count {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.shelf-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
