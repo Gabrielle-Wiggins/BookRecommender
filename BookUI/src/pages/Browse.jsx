@@ -12,7 +12,62 @@ const DEFAULT_FILTERS = {
   faithBased: 5,
 };
 
-export default function Browse({ toggleSave, isSaved }) {
+// Map tag keywords to filter categories
+const TAG_FILTER_MAP = [
+  { keywords: ["violence", "violent", "gore", "brutal"], key: "violence" },
+  { keywords: ["sexual", "explicit", "mature", "adult", "romance"], key: "sexualContent" },
+  { keywords: ["profanity", "language", "swearing", "crude"], key: "profanity" },
+  { keywords: ["occult", "magic", "witchcraft", "demon", "dark arts"], key: "occult" },
+  { keywords: ["faith", "christian", "religious", "spiritual", "biblical"], key: "faithBased" },
+];
+
+function getBookWarnings(book, filters) {
+  const warnings = [];
+  const tagStr = ((book.tags || "") + " " + (book.genre || "")).toLowerCase();
+
+  // Check chapter-level warnings first
+  const chapters = book.chapters || [];
+  const warningMap = {};
+  chapters.forEach((ch) => {
+    (ch.contentWarnings || []).forEach((w) => {
+      const key = w.type.charAt(0).toLowerCase() + w.type.slice(1);
+      if (!warningMap[key] || warningMap[key] < w.level) {
+        warningMap[key] = w.level;
+      }
+    });
+  });
+
+  // Check chapter warnings against filters
+  for (const [key, level] of Object.entries(warningMap)) {
+    if (filters[key] !== undefined && level > filters[key]) {
+      warnings.push(key);
+    }
+  }
+
+  // Fall back to tag-based detection if no chapter data
+  if (chapters.length === 0) {
+    TAG_FILTER_MAP.forEach(({ keywords, key }) => {
+      if (keywords.some((kw) => tagStr.includes(kw))) {
+        // Tags imply level 3 — flag if filter is set below 3
+        if (filters[key] < 3) {
+          warnings.push(key);
+        }
+      }
+    });
+  }
+
+  return warnings;
+}
+
+const WARNING_NAMES = {
+  violence: "Violence",
+  sexualContent: "Sexual content",
+  profanity: "Profanity",
+  occult: "Occult themes",
+  faithBased: "Faith-based",
+};
+
+export default function Browse({ toggleSave, isSaved, onSelect }) {
   const [search, setSearch] = useState("");
   const [genre, setGenre] = useState("All");
   const [filters, setFilters] = useState(DEFAULT_FILTERS);
@@ -89,11 +144,21 @@ export default function Browse({ toggleSave, isSaved }) {
           )}
 
           <div className="book-list">
-            {filtered.map((book, i) => (
-              <div key={book.id} style={{ animationDelay: `${i * 0.05}s` }}>
-                <BookCard book={book} toggleSave={toggleSave} isSaved={isSaved} />
-              </div>
-            ))}
+            {filtered.map((book, i) => {
+              const warnings = getBookWarnings(book, filters);
+              return (
+                <div key={book.id} style={{ animationDelay: `${i * 0.05}s` }}>
+                  <BookCard
+                    book={book}
+                    toggleSave={toggleSave}
+                    isSaved={isSaved}
+                    onSelect={onSelect}
+                    warnings={warnings}
+                    warningNames={WARNING_NAMES}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

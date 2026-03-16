@@ -36,6 +36,26 @@ body {
   flex-direction: column;
 }
 
+/* Admin nav */
+.admin-nav {
+  padding: 12px 1.5rem;
+  border-bottom: 1px solid var(--cream-border);
+  background: var(--white);
+}
+
+.admin-back-btn {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+
+.admin-back-btn:hover { color: var(--burgundy); }
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream-dark); }

@@ -8,6 +8,7 @@ public class Book
     public string Genre { get; set; } = "";
     public string Tags { get; set; } = "";
     public string Summary { get; set; } = "";
+    public string CoverImageUrl { get; set; } = "";
     public int ReviewCount { get; set; }
 
     public List<Chapter>? Chapters { get; set; }

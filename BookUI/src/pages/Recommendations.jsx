@@ -5,7 +5,7 @@ import "./Recommendations.css";
 
 const GENRES = ["Fantasy", "Historical Fiction", "Mystery", "Romance", "Non-Fiction", "Science Fiction", "Thriller"];
 
-export default function Recommendations({ toggleSave, isSaved }) {
+export default function Recommendations({ toggleSave, isSaved, onSelect }) {
   const [selectedGenre, setSelectedGenre] = useState("");
 
   const { books, loading, error } = useRecommendations(selectedGenre);
@@ -55,7 +55,7 @@ export default function Recommendations({ toggleSave, isSaved }) {
           <div className="book-list">
             {books.map((book, i) => (
               <div key={book.id} style={{ animationDelay: `${i * 0.06}s` }}>
-                <BookCard book={book} toggleSave={toggleSave} isSaved={isSaved} />
+                <BookCard book={book} toggleSave={toggleSave} isSaved={isSaved} onSelect={onSelect} />
               </div>
             ))}
           </div>

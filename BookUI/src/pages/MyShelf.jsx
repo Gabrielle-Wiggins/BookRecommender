@@ -1,7 +1,7 @@
 import BookCard from "../components/BookCard";
 import "./MyShelf.css";
 
-export default function MyShelf({ savedBooks, toggleSave }) {
+export default function MyShelf({ savedBooks, toggleSave, onSelect }) {
   const isSaved = (id) => savedBooks.some((b) => b.id === id);
 
   return (
@@ -24,7 +24,7 @@ export default function MyShelf({ savedBooks, toggleSave }) {
           <div className="book-list">
             {savedBooks.map((book, i) => (
               <div key={book.id} style={{ animationDelay: `${i * 0.05}s` }}>
-                <BookCard book={book} toggleSave={toggleSave} isSaved={isSaved} />
+                <BookCard book={book} toggleSave={toggleSave} isSaved={isSaved} onSelect={onSelect} />
               </div>
             ))}
           </div>
