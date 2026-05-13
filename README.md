@@ -1,6 +1,5 @@
 # Faithful Reads
-
-A full-stack book recommendation system that uses semantic search and embedding-based similarity to generate personalized book suggestions.
+A Christian-friendly book recommendation web app that lets users browse, search, and discover books filtered by chapter-level content warnings.
 
 Built as an exploration of recommendation system design, including feature engineering, ranking logic, and search strategy tradeoffs.
 
