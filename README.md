@@ -1,6 +1,28 @@
-# Faithful Reads 📚
+# Faithful Reads
 
-A Christian-friendly book recommendation web app that lets users browse, search, and discover books filtered by chapter-level content warnings.
+A full-stack book recommendation system that uses semantic search and embedding-based similarity to generate personalized book suggestions.
+
+Built as an exploration of recommendation system design, including feature engineering, ranking logic, and search strategy tradeoffs.
+
+This project explores how modern recommendation systems balance semantic understanding with traditional keyword-based search to improve discovery quality.
+
+---
+
+## Architecture Overview
+
+- User input is processed through a search pipeline (semantic or keyword-based)
+- Book data is embedded using transformer-based representations
+- Similarity scoring ranks candidate recommendations
+- Results are returned through a Flask API and rendered in a Gradio web interface
+
+---
+
+## Key Engineering Decisions
+
+- Implemented dual search strategy (semantic + literal) to balance accuracy and flexibility
+- Used vector embeddings for semantic similarity matching
+- Optimized retrieval using cached embeddings to reduce latency
+- Designed fallback handling for missing metadata and book covers
 
 ---
 
